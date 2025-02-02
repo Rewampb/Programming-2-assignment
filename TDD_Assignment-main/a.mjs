@@ -40,7 +40,12 @@ function multiply(...theArgs) {
 
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
-
-
-
+const tests = test("Multiply function");
+tests.isEqual(multiply(2, 3), 6, "Multiplication of 2 and 3 should be 6");
+tests.isEqual(multiply("2", 5), 10, 'Sum of "2" and 3 should be 10');
+tests.isNotANumber(multiply("coke", 3), 'Multiplication of "2" and 3 should return NaN');
+tests.isNotANumber(multiply(0, Infinity), 'Multiplication of 0 and Infinity should return NaN');
+tests.isEqual(multiply(0, 5), 0, "Multiplication of 0 and 5 should be 0");
+tests.isEqual(multiply(2, Infinity), Infinity, "Multiplication of 2 and Infinity should be Infinity");
+tests.isEqual(multiply(2, -Infinity), -Infinity, "Multiplication of 2 and -Infinity should be -Infinity");
 //#endregion
