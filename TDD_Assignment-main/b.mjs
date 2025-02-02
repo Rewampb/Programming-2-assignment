@@ -31,20 +31,12 @@ function formatName(name) {
     if (specialCharacter.test(trimmedName)) {
         return null;
     }
-    let formattedName = "";
-    let capitalizeNext = true;
+    const formattedName = trimmedName
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
 
-    for (let i = 0; i < trimmedName.length; i++) {
-        if (capitalizeNext && trimmedName[i] !== " ") {
-            formattedName += trimmedName[i].toUpperCase();
-            capitalizeNext = false;
-        } else {
-            formattedName += trimmedName[i].toLowerCase();
-        }
-        if (trimmedName[i] === " ") {
-            capitalizeNext = true;
-        }
-    }
+    return formattedName;
 }
 
 
@@ -56,7 +48,11 @@ function formatName(name) {
 
 //#region Tests --------------------------------------------------------------------
 // Write your tests her.
-
+const tests = test("Formatting name function");
+tests.isEqual(formatName(5304), null, "It is not string, should return null");
+tests.isEqual(formatName(" peter parker "), "Peter Parker", "Remove whitespace and capitalize the letter");
+tests.isEqual(formatName(" "), " ", "Return an empty string");
+tests.isEqual(formatName("Peter@Parker"), null, "It contain special character, return null");
 
 
 //#endregion
