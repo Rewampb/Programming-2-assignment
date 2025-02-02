@@ -29,7 +29,7 @@ function sequence(n) {
 }
 
 //#region Tests --------------------------------------------------------------------
-const tests = test("Sum function");
+const tests = test("Fibonanci function");
 
 // Basic cases
 tests.isEqual(sequence(0), 0, "For n = 0, the function should return 0");
