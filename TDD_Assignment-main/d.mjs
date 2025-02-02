@@ -44,15 +44,15 @@ function guessNumber(target, guess) {
 
 //#region Tests --------------------------------------------------------------------
 
+//#region Tests --------------------------------------------------------------------
+const tests = test("Guess Number");
 // Basic cases
-test.isEqual(guessNumber(10, 5), "Too low", "If target is 10 and guess is 5, return 'Too low'");
-test.isEqual(guessNumber(10, 15), "Too high", "If target is 10 and guess is 15, return 'Too high'");
-test.isEqual(guessNumber(10, 10), "Correct!", "If target is 10 and guess is 10, return 'Correct!'");
-
+tests.isEqual(guessNumber(10, 5), "Too low", "If target is 10 and guess is 5, return 'Too low'");
+tests.isEqual(guessNumber(10, 15), "Too high", "If target is 10 and guess is 15, return 'Too high'");
+tests.isEqual(guessNumber(10, 10), "Correct!", "If target is 10 and guess is 10, return 'Correct!'");
 // Invalid inputs
-
-
+tests.isEqual(guessNumber("10", 10), null, "Input in target parameter is string, return null");
+tests.isEqual(guessNumber(10, "10"), null, "Input in guess parameter is string, return null");
 // Edge cases
-
-
+tests.isEqual(guessNumber(10, 3.14), null, "Input in guess parameter is not integer, return null");
 //#endregion
