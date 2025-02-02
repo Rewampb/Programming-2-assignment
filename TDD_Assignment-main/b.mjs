@@ -19,7 +19,33 @@ import test from "./test.mjs";
 
 //#region function -----------------------------------------------------------------
 // Write your function her.
+function formatName(name) {
+    if (typeof name !== "string") {
+        return null;
+    }
+    const trimmedName = name.trim();
+    if (trimmedName === "") {
+        return " ";
+    }
+    const specialCharacter = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    if (specialCharacter.test(trimmedName)) {
+        return null;
+    }
+    let formattedName = "";
+    let capitalizeNext = true;
 
+    for (let i = 0; i < trimmedName.length; i++) {
+        if (capitalizeNext && trimmedName[i] !== " ") {
+            formattedName += trimmedName[i].toUpperCase();
+            capitalizeNext = false;
+        } else {
+            formattedName += trimmedName[i].toLowerCase();
+        }
+        if (trimmedName[i] === " ") {
+            capitalizeNext = true;
+        }
+    }
+}
 
 
 //#endregion
