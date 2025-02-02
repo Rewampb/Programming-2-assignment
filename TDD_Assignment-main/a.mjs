@@ -19,9 +19,13 @@ import test from "./test.mjs";
 
 //#region function -----------------------------------------------------------------
 // Write your function her.
-
-
-
+function multiply(...theArgs) {
+    let total = 1;
+    for (const arg of theArgs) {
+        total *= arg;
+    }
+    return total;
+}console.log(multiply(1, 2, 3));
 //#endregion
 
 
