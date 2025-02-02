@@ -21,11 +21,17 @@ import test from "./test.mjs";
 // Write your function her.
 function multiply(...theArgs) {
     let total = 1;
-    for (const arg of theArgs) {
+    for (let arg of theArgs) {
+        if (typeof arg === "string" && !isNaN(Number(arg))) {
+            arg = Number(arg);
+        }
+        if (typeof arg !== 'number' || isNaN(arg)) {
+            return NaN;
+          }
         total *= arg;
     }
     return total;
-}console.log(multiply(1, 2, 3));
+}
 //#endregion
 
 
