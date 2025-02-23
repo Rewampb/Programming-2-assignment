@@ -710,4 +710,32 @@ function filterBooksStartWithThe(array) {
     return filteredBooks;
 }
 
-console.log(filterBooksStartWithThe(books));
+//console.log(filterBooksStartWithThe(books));
+
+function filterBooksByAuthorWithT(books) {
+    let result = [];
+
+    for (let i = 0; i < books.length; i++) {
+        let author = books[i].author;
+        let hasT = false;
+
+        let realAuthor = "";
+        for (let j = 0; j < author.length; j++) {
+            if (author[j] ==='(') break;
+            realAuthor += author[j];
+        }
+
+        for (let j = 0; j < realAuthor.length; j++) {
+            if (realAuthor[j] === 't' || realAuthor[j] === 'T') {
+                hasT = true;
+                break;
+            }
+        }
+        if (hasT) {
+            result.push(books[i]);
+        }
+    }
+    return result;
+}
+
+console.log(filterBooksByAuthorWithT(books));
