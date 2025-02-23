@@ -26,3 +26,12 @@ const squareRoot = (num, precision = 0) => {
 function cube(number) {
     return number * number * number;
 }
+
+//A function that returns the area of a circle given the radius
+function areaOfCircle(radius) {
+    if (radius < 0) {
+        return "Radius cannot be negative.";
+    }
+    const PI = 3.14;
+    return PI * radius * radius;
+}
