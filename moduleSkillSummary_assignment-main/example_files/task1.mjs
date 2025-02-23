@@ -21,3 +21,8 @@ const squareRoot = (num, precision = 0) => {
     };
     return Math.round(res * (10 ** precision)) / (10 ** precision);
 };
+
+//A function that returns the cube of a number
+function cube(number) {
+    return number * number * number;
+}
