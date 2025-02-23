@@ -102,3 +102,41 @@ function filterBooksChronologically(order = "acs") {
     }
     return result;
 }
+
+function filterBooksByAuthorLastName() {
+    const list = {};
+    for (let i = 0; i < books.length; i++) {
+        const authorName = books[i].author;
+        let lastName = "";
+        for (let j = authorName.length - 1; j >= 0; j--) {
+            if (authorName[j] === " ") {
+                break;
+            }
+            lastName = authorName[j] + lastName;
+        }
+        if (!list[lastName]) {
+            list[lastName] = [];
+        }
+        list[lastName].push(books[i]);
+    }
+    return list;
+}
+
+function filterBooksByAuthorFirstName() {
+    const list = {};
+    for (let i = 0; i < books.length; i++) {
+        const authorName = books[i].author;
+        let firstName = "";
+        for (let j = 0; j < authorName.length; j++) {
+            if (authorName[j] === " ") {
+                break;
+            }
+            firstName += authorName[j];
+        }
+        if (!list[firstName]) {
+            list[firstName] = [];
+        }
+        list[firstName].push(books[i]);
+    }
+    return list;
+}
