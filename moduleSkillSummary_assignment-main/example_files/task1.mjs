@@ -35,3 +35,8 @@ function areaOfCircle(radius) {
     const PI = 3.14;
     return PI * radius * radius;
 }
+
+//A function that returns a greeting, given a name
+function greeting(name) {
+    return `Hello, ${name}!`;
+}
