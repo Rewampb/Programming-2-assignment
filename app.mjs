@@ -52,11 +52,13 @@ document.getElementById('importSource').addEventListener('change', event => {
 
     const reader = new FileReader();
     reader.onload = (e) => {
+        console.log("File loaded")
         const jsonText = e.target.result;
+        console.log("Raw JSON content:", jsonText);
         saveGamesFromJSON(jsonText);
     };
     reader.readAsText(file);
 });
 
 refreshGamesArray();
-console.log('Loaded games:', games);
+console.log('Loaded games:', games)
