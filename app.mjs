@@ -23,6 +23,15 @@ function retrieveAllGamesFromStorage() {
     return allGames;
 }
 
+function deleteGameFromStorage(game) {
+    localStorage.removeItem(game.title);
+    const index = games.findIndex(g => g.title === games.title);
+    if (index !== -1) {
+        games.splice(index, 1);
+    }
+    renderAllGames();
+}
+
 function outputGamesAsJSON() {
     return JSON.stringify(games);
 }
@@ -124,6 +133,17 @@ function renderGame(game) {
     wrapper.appendChild(ratingWrapper);
 
     container.appendChild(wrapper);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.style.marginLeft = '10px';
+    deleteButton.addEventListener('click', () => {
+        if (confirm(`Are you sure you want to delete "${game.title}"?`)) {
+            deleteGameFromStorage(game);
+        }
+    });
+
+    wrapper.appendChild(deleteButton);
 }
 
 function renderAllGames() {
