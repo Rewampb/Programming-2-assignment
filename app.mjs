@@ -131,6 +131,32 @@ function renderAllGames() {
     games.forEach(renderGame);
 }
 
+document.getElementById('addGameForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const newGameData = {
+        title: formData.get('title'),
+        designer: formData.get('designer'),
+        artist: formData.get('artist'),
+        publisher: formData.get('publisher'),
+        year: parseInt(formData.get('year')) || 0,
+        players: formData.get('players'),
+        time: formData.get('time'),
+        difficulty: formData.get('difficulty'),
+        url: formData.get('url'),
+        playCount: parseInt(formData.get('playCount')) || 0,
+        personalRating: parseInt(formData.get('personalRating')) || 0
+    };
+
+    const newGame = new Game(newGameData);
+    games.push(newGame);
+    saveGamesToStorage(newGame);
+    renderGame(newGame);
+    form.reset();
+});
+
 refreshGamesArray();
 console.log('Loaded games:', games);
 renderAllGames();
