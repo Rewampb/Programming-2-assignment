@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game Record</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Game Library</h1>
     <input type="file" id="importSource" accept=".json" />
+
+    <h2>Add new game</h2>
+    <form id="addGameForm">
+        <input type="text" placeholder="Title" name="title" required />
+        <input type="text" placeholder="Designer" name="designer" required />
+        <input type="text" placeholder="Artist" name="artist" required />
+        <input type="text" placeholder="Publisher" name="Publisher" required />
+        <input type="number" placeholder="Year" name="year" required />
+        <input type="text" placeholder="Players" name="players" required />
+        <input type="text" placeholder="Time" name="time" required />
+        <input type="text" placeholder="Difficulty" name="difficulty" required />
+        <input type="url" placeholder="BGG URL" name="url" required />
+        <input type="number" placeholder="Playcount" name="playcount" required />
+        <input type="number" placeholder="Personal Rating" name="personalRating" required />
+        <button type="submit">Add game</button>
+    </form>
+    <div id="gameContainer"></div>
+    
     <script type="module" src="app.mjs"></script>
 </body>
 </html>
