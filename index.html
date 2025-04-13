@@ -25,6 +25,15 @@
         <input type="number" placeholder="Personal Rating" name="personalRating" required />
         <button type="submit">Add game</button>
     </form>
+    
+    <h3>Sort Games</h3>
+    <select id="sortGames">
+        <option value="">Select sort type</option>
+        <option value="players">Player Count</option>
+        <option value="rating">Personal Rating</option>
+        <option value="difficulty">Difficulty</option>
+        <option value="playCount">Play count</option>
+    </select>
     <div id="gameContainer"></div>
     
     <script type="module" src="app.mjs"></script>

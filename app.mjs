@@ -25,7 +25,7 @@ function retrieveAllGamesFromStorage() {
 
 function deleteGameFromStorage(game) {
     localStorage.removeItem(game.title);
-    const index = games.findIndex(g => g.title === games.title);
+    const index = games.findIndex(g => g.title === game.title);
     if (index !== -1) {
         games.splice(index, 1);
     }
@@ -150,6 +150,39 @@ function renderAllGames() {
     container.innerHTML = '';
     games.forEach(renderGame);
 }
+
+function sortGames(type) {
+    switch (type) {
+        case 'players':
+            games.sort((a, b) => {
+                const aMin = parseInt(a.players);
+                const bMin = parseInt(b.players);
+                return (isNaN(aMin) ? 0 : aMin) - (isNaN(bMin) ? 0 : bMin);
+            });
+            break;
+        case 'rating':
+            games.sort((a, b) => b.personalRating - a.personalRating);
+            break;
+        case 'difficulty':
+            const difficultyOrder = ['Light', 'Medium', 'Medium-Heavy', 'Heavy'];
+            games.sort((a,b) => {
+                const aIndex = difficultyOrder.indexOf(a.difficulty);
+                const bIndex = difficultyOrder.indexOf(b.difficulty);
+                return aIndex - bIndex;
+            });
+            break;
+        case 'playCount':
+            games.sort((a,b) => b.playCount - a.playCount);
+            break;
+        default:
+            break;
+    }
+    renderAllGames();
+}
+
+document.getElementById('sortGames').addEventListener('change', (e) => {
+    sortGames(e.target.value);
+});
 
 document.getElementById('addGameForm').addEventListener('submit', (e) => {
     e.preventDefault();
