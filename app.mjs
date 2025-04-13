@@ -85,7 +85,20 @@ function renderGame(game) {
     wrapper.appendChild(details);
 
     const playCount = document.createElement('p');
-    playCount.innerHTML = `Playcount: ${game.playCount} <button>+</button>`;
+    const playCountSpan = document.createElement('span');
+    playCountSpan.textContent = game.playCount;
+
+    const addButton = document.createElement('button');
+    addButton.textContent = '+';
+    addButton.addEventListener('click', () => {
+        game.playCount += 1;
+        playCountSpan.textContent = game.playCount;
+        saveGamesToStorage(game);
+    });
+
+    playCount.innerHTML = 'Playcount: ';
+    playCount.appendChild(playCountSpan);
+    playCount.appendChild(addButton);
     wrapper.appendChild(playCount);
 
     const ratingWrapper = document.createElement('p');
@@ -99,6 +112,12 @@ function renderGame(game) {
 
     const ratingValue = document.createElement('span');
     ratingValue.textContent = game.personalRating;
+
+    ratingInput.addEventListener('input', () => {
+        game.personalRating = parseInt(ratingInput.value);
+        ratingValue.textContent = game.personalRating;
+        saveGamesToStorage(game);
+    });
 
     ratingWrapper.appendChild(ratingInput);
     ratingWrapper.appendChild(ratingValue);
